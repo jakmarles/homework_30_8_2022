@@ -1,6 +1,6 @@
 import json
 
-class Contact:
+class Contact: # this class is meant for the contact itself
     name = ""
     tell = 0
 
@@ -9,4 +9,4 @@ class Contact:
         self.tell = tell
 
     def __str__(self):
-        return json.dumps({"name": self.name, "tell": self.tell})
+        return json.dumps({"name": self.name, "tell": self.tell}) # add a new contact to contacts list

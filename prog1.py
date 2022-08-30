@@ -2,7 +2,7 @@ from MMenu import mainmenu
 
 
 def main():
-    mainmenu()
+    mainmenu() #launch the main menu func
 
 
 if __name__ == "__main__":

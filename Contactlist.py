@@ -1,7 +1,7 @@
 import json
 from Contact import Contact
 
-class Contactlist:
+class Contactlist: # this is the whole contactlist and functions to perfome
     contacts = []
 
     def __init__(self):
