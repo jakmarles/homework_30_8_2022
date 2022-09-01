@@ -11,7 +11,7 @@ def load(DATA_FILE):
     with open(DATA_FILE) as f:
         return json.load(f)
         
-def chkJson(data):
+def file_exist_check(data):
     if exists(data):
         pass
     else:

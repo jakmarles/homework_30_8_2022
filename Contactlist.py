@@ -4,6 +4,7 @@ from Contact import Contact
 class Contactlist: # this is the whole contactlist and functions to perfome
     contacts = []
 
+
     def __init__(self,contacts=[]) -> None:
         self.contacts=contacts
 
@@ -18,6 +19,7 @@ class Contactlist: # this is the whole contactlist and functions to perfome
         self.contacts.append(Contact(name, tell))
     
     
+
     def send_to_json(self,data):
         res=[]
         for contact in self.contacts:
@@ -48,3 +50,11 @@ class Contactlist: # this is the whole contactlist and functions to perfome
             for i in file:
                 if i['name']==name:
                     print(i)
+
+
+def print_all():
+    with open('my_contacts.json', 'r') as file:
+        parsed = json.load(file)
+        print(json.dumps(parsed))
+
+    
