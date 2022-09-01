@@ -4,30 +4,47 @@ from Contact import Contact
 class Contactlist: # this is the whole contactlist and functions to perfome
     contacts = []
 
-    def __init__(self):
-        pass
+    def __init__(self,contacts=[]) -> None:
+        self.contacts=contacts
 
-    def add_contact(self, name="", tell=0): # function that adds a contact to contact valubale 
-        self.contacts.append(Contact(name, tell))
-
-    def remove_contact(self, victim): # removes a contact and let you chose him by name
-        self.contacts.remove(victim)
-
-    def search_contact(self, contact_name): # search for a contact by using his name
-        for contact in self.contacts:
-            if type(contact) is Contact:
-                if contact.name == contact_name:
-                    return contact
-        return None
-
-    def get_contacts_as_json_ar(self): # makes the inputed string putable in json by format
-        res = []
-        for contact in self.contacts:
-            res.append(json.loads(contact.__str__()))
-        return res
 
     def __str__(self) -> str:
-        res = ""
+        res=''
         for contact in self.contacts:
-            res += contact.__str__()
+            res+=contact.__str__()
         return res
+
+    def add_contact(self, name, tell): # function that adds a contact to contact valubale 
+        self.contacts.append(Contact(name, tell))
+    
+    
+    def send_to_json(self,data):
+        res=[]
+        for contact in self.contacts:
+            res.append( json.loads(contact.__str__()))
+        with open(data,'r+')as f:
+            tmp=json.load(f)
+            for i in res:
+                tmp.append(i)
+        with open(data,'w')as f:
+            json.dump(tmp,f,indent=4)
+        self.contacts.clear()   
+
+
+    def remove_contact(self,name,data):
+        with open(data,'r')as f:
+            file=json.load(f)
+            counter=0
+            for i in (file):
+                if i['name']==name:
+                    del file[counter]
+                counter+=1
+        with open(data,'w')as f:
+            json.dump(file,f,indent=4)
+
+    def search_contact(self,name,data):
+        with open(data,'r')as f:
+            file=json.load(f)
+            for i in file:
+                if i['name']==name:
+                    print(i)

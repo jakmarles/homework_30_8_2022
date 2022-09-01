@@ -1,11 +1,6 @@
-# Read the file
-# Parse the JSON to a data structure
-# Modify the data structure instead of creating a new one
-# Serialise the data structure back to JSON
-# Write it to the file
 
 import json
-
+from genericpath import exists
 
 def save(json_lst, DATA_FILE):
     with open(DATA_FILE, 'w') as f:
@@ -15,3 +10,11 @@ def save(json_lst, DATA_FILE):
 def load(DATA_FILE):
     with open(DATA_FILE) as f:
         return json.load(f)
+        
+def chkJson(data):
+    if exists(data):
+        pass
+    else:
+        with open(data,'w')as f:
+            x=[]
+            json.dump(x,f)
