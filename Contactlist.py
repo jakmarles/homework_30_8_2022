@@ -7,7 +7,7 @@ class Contactlist: # this is the whole contactlist and functions to perfome
     def __init__(self):
         pass
 
-    def add_contact(self, name="", tell=0): # functtion that adds a contact to contact valubale 
+    def add_contact(self, name="", tell=0): # function that adds a contact to contact valubale 
         self.contacts.append(Contact(name, tell))
 
     def remove_contact(self, victim): # removes a contact and let you chose him by name
